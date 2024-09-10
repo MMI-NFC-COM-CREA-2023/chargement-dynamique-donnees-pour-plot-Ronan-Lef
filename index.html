@@ -43,5 +43,24 @@
         </figure>
       </section>
     </main>
+
+    <div id="myplot"></div>
+    <script>
+      async function afficherPenguins() {
+        try {
+          const penguinsReponse = await fetch("./penguins.json");
+          const penguins = await penguinsReponse.json();
+          console.log(penguins);
+        } catch (error) {
+          console.error("Erreur lors du chargement du fichier JSON:", error);
+        }
+      }
+      
+      afficherPenguins().then(penguins => {
+        console.log(penguins);
+      }).catch(error => {
+        console.error("Erreur lors du chargement des données:", error);
+      });
+    </script>
   </body>
 </html>
