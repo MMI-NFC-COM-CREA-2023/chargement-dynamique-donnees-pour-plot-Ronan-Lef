@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta namz="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page qui affiche 2 graphiques</title>
+
+    <style>
+      .graph-placeholder {
+        width: 300px;
+        height: 500px;
+        background-color: #4b94d0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#graphique1">Premier graphique</a></li>
+          <li><a href="#graphique2">Deuxièeme graphique</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="graphique1">
+        <h2 id="graphique1">Graphique 1</h2>
+        <p>Voici le contenu du 1er graphique</p>
+        <figure>
+          <div id="graph1" class="graph-placeholder"></div>
+          <figcaption>Graphique 1 : Voici le premier graphique</figcaption>
+        </figure>
+      </section>
+
+      <section id="graphique2">
+        <h2 id="graphique2">Graphique 2</h2>
+        <p>Voici le contenu du 2ème graphique</p>
+        <figure>
+          <div id="graph2" class="graph-placeholder"></div>
+          <figcaption>Graphique 2 : Voici le deuxième graphique</figcaption>
+        </figure>
+      </section>
+    </main>
+  </body>
+</html>
