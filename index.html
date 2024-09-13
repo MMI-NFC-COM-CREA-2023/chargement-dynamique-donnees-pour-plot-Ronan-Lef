@@ -8,7 +8,7 @@
     <style>
       .graph-placeholder {
         width: 300px;
-        background-color: #4b94d0;
+        background-color: #dce4dd;
       }
     </style>
   </head>
@@ -17,9 +17,11 @@
     <header>
       <nav>
         <ul>
-          <li><a href="#graphique1">Premier graphique : Les penguins</a></li>
           <li>
-            <a href="#graphique2">Deuxième graphique, pas encore choisi</a>
+            <a href="#graphique1">Premier graphique : Le culmen des penguins</a>
+          </li>
+          <li>
+            <a href="#graphique2">Deuxième graphique : Les nageoires des penguins</a>
           </li>
         </ul>
       </nav>
@@ -27,7 +29,7 @@
 
     <main>
       <section id="graphique1">
-        <h2 id="graphique1">Graphique des penguins</h2>
+        <h2>Graphique du culmen des penguins</h2>
         <p>
           Les penguins sont des animaux très mignons et ils marchent d'une façon
           amusante. Voici un graphique sur la longueur et la largeur du culmen
@@ -37,20 +39,23 @@
         <figure>
           <div id="graph1" class="graph-placeholder"></div>
           <figcaption>
-            Graphique des penguins : longueur et largeur du culmen
+            Graphique de la longueur et la largeur du culmen des penguins
           </figcaption>
         </figure>
       </section>
 
       <section id="graphique2">
-        <h2 id="graphique2">Graphique non défini</h2>
+        <h2 id="graphique2">Graphique des nageoires des penguins</h2>
         <p>
-          Le deuxième graphique contiendra des données sur un autre sujet que je
-          n'ai pas encore choisi.
+          Les penguins sont des animaux qui possèdent des nageoires, il leur
+          arrive de plonger dans l'eau pour passer d'un glacier à l'autre. Ce
+          sont des animaux qui apprécient l'eau et en ont besoin pour être
+          épanouis. Ce deuxième graphique représente la masse et la longueur des nageoires
+          nageoires des penguins.
         </p>
         <figure>
           <div id="graph2" class="graph-placeholder"></div>
-          <figcaption>Graphique 2 : Sujet à définir</figcaption>
+          <figcaption>Graphique de la masse et la longueur nageoires des penguins</figcaption>
         </figure>
       </section>
     </main>
@@ -58,6 +63,7 @@
     <div id="myplot"></div>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+
     <script>
       async function afficherPenguins() {
         let penguins = null;
@@ -82,6 +88,22 @@
           div.append(plot);
         }
       });
+    </script>
+
+    <script type="module">
+      // Charger les données JSON
+      import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+      const penguinResponse2 = await fetch("penguins.json");
+      const penguin2 = await penguinResponse2.json();
+      console.log(penguin2);
+
+      const plot2 = Plot.dot(penguin2, {
+        x: "flipper_length_mm",
+        y: "body_mass_g",
+        stroke: "species",
+      }).plot();
+      document.querySelector("#graph2").append(plot2);
     </script>
   </body>
 </html>
